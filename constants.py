@@ -5,7 +5,7 @@ from decouple import config # Enable us to access our .env variables
 MODE = "DEVELOPMENT" # or "PRODUCTION"
 
 # Close all open positions and orders
-ABORT_ALL_POSITIONS = True
+ABORT_ALL_POSITIONS = True # Recommendation: Testnet -> True, Production -> False
 
 # Find Cointegrated Pairs
 FIND_COINTEGRATED = True

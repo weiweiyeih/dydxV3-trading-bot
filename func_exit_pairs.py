@@ -268,11 +268,11 @@ def manage_trade_exits(client):
                 # Sum PNL
                 print(f'Total PNL: {float(closed_position_m1.data["positions"][0]["realizedPnl"]) + float(closed_position_m2.data["positions"][0]["realizedPnl"])}')
                 
-                send_message(f'Total PNL: {float(closed_position_m1.data["positions"][0]["realizedPnl"]) + float(closed_position_m2.data["positions"][0]["realizedPnl"])}')
+                send_message(f'Exited position_market_m1: {position_market_m1} & position_market_m2: {position_market_m2}. Total PNL: {float(closed_position_m1.data["positions"][0]["realizedPnl"]) + float(closed_position_m2.data["positions"][0]["realizedPnl"])}')
                 
                 # ===== W's note - end   =====
                 
-                send_message(f"Exited position_market_m1: {position_market_m1} & position_market_m2: {position_market_m2}")
+                # send_message(f"Exited position_market_m1: {position_market_m1} & position_market_m2: {position_market_m2}")
                 
                 
                 
