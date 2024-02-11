@@ -255,7 +255,6 @@ def manage_trade_exits(client):
                     status="CLOSED",
                     limit=1
                     ) 
-                print(f"closed_position_m1({closed_position_m1.data['positions'][0]['market']}) - realizedPnl: {closed_position_m1.data['positions'][0]['realizedPnl']}")
                 
                 # Get position_market_m2
                 closed_position_m2 = client.private.get_positions(
@@ -263,12 +262,20 @@ def manage_trade_exits(client):
                     status="CLOSED",
                     limit=1
                     ) 
-                print(f"closed_position_m2({closed_position_m2.data['positions'][0]['market']}) - realizedPnl: {closed_position_m2.data['positions'][0]['realizedPnl']}")
+                
+                closed_market_1 = closed_position_m1.data['positions'][0]['market']
+                closed_market_2 = closed_position_m2.data['positions'][0]['market']
+                
+                realizedPnl_market_1 =closed_position_m1.data['positions'][0]['realizedPnl']
+                realizedPnl_market_2 =closed_position_m2.data['positions'][0]['realizedPnl']
+                
+                print(f"closed_market_1: {closed_market_1} - realizedPnl: {realizedPnl_market_1}")
+                print(f"closed_market_2: {closed_market_2} - realizedPnl: {realizedPnl_market_2}")
                 
                 # Sum PNL
-                print(f'Total PNL: {float(closed_position_m1.data["positions"][0]["realizedPnl"]) + float(closed_position_m2.data["positions"][0]["realizedPnl"])}')
+                print(f'Total PNL: {float(realizedPnl_market_1) + float(realizedPnl_market_2)}')
                 
-                send_message(f'Exited position_market_m1: {position_market_m1} & position_market_m2: {position_market_m2}. Total PNL: {float(closed_position_m1.data["positions"][0]["realizedPnl"]) + float(closed_position_m2.data["positions"][0]["realizedPnl"])}')
+                send_message(f'Exited {closed_market_1} & {closed_market_2}. Total PNL: {float(realizedPnl_market_1) + float(realizedPnl_market_2)}')
                 
                 # ===== W's note - end   =====
                 
